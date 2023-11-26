@@ -1,0 +1,17 @@
+.clock-input-container {
+  width: fit-content;
+
+  display: flex;
+  flex-direction: column;
+
+  input[type="number"] {
+    display: block;
+    max-width: calc(80 / 16) * 1rem;
+    font: inherit;
+    padding: 0.2rem 0.5rem;
+    border: 0.15rem solid #333;
+    border-radius: 0.5rem;
+
+    outline: none;
+  }
+}

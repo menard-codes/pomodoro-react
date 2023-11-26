@@ -1,0 +1,77 @@
+@mixin toggle-container-mixin($font-size) {
+  font-size: $font-size;
+  margin-block: 0.5rem;
+}
+
+.toggle-container,
+.toggle-container.md {
+  @include toggle-container-mixin(1rem);
+}
+
+.toggle-container.sm {
+  @include toggle-container-mixin(0.8rem);
+}
+
+.toggle-container.lg {
+  @include toggle-container-mixin(2rem);
+}
+
+.toggle + label {
+  font-size: 1em;
+  font-family: Arial, helvetica, sans-serif;
+  cursor: pointer;
+  user-select: none;
+  margin-left: 0.3em;
+}
+
+.toggle {
+  $width: calc(calc(35 / 16) * 1em);
+  $height: calc(calc(20 / 16) * 1em);
+  $slider-diameter: calc(calc(13 / 16) * 1em);
+  $accent-color: hsl(226, 82%, 36%);
+  $accent-color-highlight: hsl(226, 82%, 66%);
+
+  display: inline-block;
+  vertical-align: middle;
+  visibility: hidden;
+  position: relative;
+  font-size: inherit;
+  width: $width;
+  height: $height;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    visibility: visible;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: $accent-color;
+    border-radius: 1em;
+    transition: inherit;
+  }
+
+  &:checked::before {
+    background-color: $accent-color-highlight;
+  }
+
+  &::after {
+    content: "";
+    visibility: visible;
+    position: absolute;
+    width: $slider-diameter;
+    height: $slider-diameter;
+    border-radius: 50%;
+    background-color: white;
+    top: 50%;
+    left: 0%;
+    transform: translate(25%, -50%);
+    transition: inherit;
+  }
+
+  &:checked::after {
+    left: 100%;
+    transform: translate(-125%, -50%);
+  }
+}

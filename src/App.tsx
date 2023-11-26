@@ -1,9 +1,7 @@
+import PomodoroApp from "@components/PomodoroApp";
+
 function App() {
-  return (
-    <div>
-      <h1>Pomodoro</h1>
-    </div>
-  );
+  return <PomodoroApp />;
 }
 
 export default App;

@@ -1,0 +1,33 @@
+.close-btn {
+  $diameter: calc(30 / 16) * 1rem;
+
+  border-radius: 50%;
+  border: none;
+  width: $diameter;
+  height: $diameter;
+
+  display: grid;
+  place-content: center;
+
+  background-color: hsl(0, 70%, 50%);
+  color: white;
+  font-weight: 900;
+}
+
+.modal-container {
+  position: fixed;
+  inset: 0;
+  overflow: auto;
+  background-color: hsl(0, 0%, 30%, 0.9);
+
+  .modal {
+    background-color: white;
+    color: #333;
+    width: 100%;
+    max-width: calc(500 / 16) * 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-block: 1rem;
+    margin-inline: auto;
+  }
+}

@@ -1,6 +1,6 @@
 import "./Button.styles.scss";
 
-interface ButtonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: string | JSX.Element | JSX.Element[];
 }
 

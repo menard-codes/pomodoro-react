@@ -1,0 +1,25 @@
+.clock-inputs-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.save-btn {
+  display: block;
+  margin-inline: auto;
+  padding: 0.2rem 0.8rem;
+  border-radius: 1rem;
+  border: none;
+  margin-top: 0.5rem;
+
+  @media (prefers-color-scheme: light) {
+    background-color: #333;
+    color: white;
+  }
+}
+
+.clock-params-container {
+  border: calc(2 / 16) * 1rem solid #333;
+  border-radius: 1rem;
+  padding: 1rem;
+}
