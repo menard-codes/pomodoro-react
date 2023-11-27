@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useId } from "react";
 
 import Button from "@components/Utils/Button";
 
@@ -15,6 +15,8 @@ interface TaskProps {
 export default function Task({ task }: TaskProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [taskInput, setTaskInput] = useState(task.taskLabel);
+
+  const customTaskId = useId();
 
   const pomodoroDispatch = usePomodoroDispatch();
 
@@ -57,28 +59,30 @@ export default function Task({ task }: TaskProps) {
   };
 
   return (
-    <div className="task-item-container">
+    <div className="task-item">
       <input
         type="checkbox"
-        id={`${task.id}`}
+        id={customTaskId}
         checked={task.isDone}
         onChange={handleCheckTask}
       />
-      <TaskDisplay
-        taskLabel={task.taskLabel}
-        isEditing={isEditing}
-        taskId={task.id.toString()}
-        taskInput={taskInput}
-        setTaskInput={setTaskInput}
-      />
-      <TaskItemButtons
-        isEditing={isEditing}
-        setIsEditing={setIsEditing}
-        taskLabel={task.taskLabel}
-        setTaskInput={setTaskInput}
-        handleSaveEdit={handleSaveEdit}
-        handleDelete={handleDelete}
-      />
+      <div>
+        <TaskDisplay
+          taskLabel={task.taskLabel}
+          isEditing={isEditing}
+          taskId={customTaskId}
+          taskInput={taskInput}
+          setTaskInput={setTaskInput}
+        />
+        <TaskItemButtons
+          isEditing={isEditing}
+          setIsEditing={setIsEditing}
+          taskLabel={task.taskLabel}
+          setTaskInput={setTaskInput}
+          handleSaveEdit={handleSaveEdit}
+          handleDelete={handleDelete}
+        />
+      </div>
     </div>
   );
 }
@@ -100,7 +104,12 @@ function TaskDisplay({
 }: TaskDisplayProps) {
   if (isEditing) {
     return (
-      <input value={taskInput} onChange={(e) => setTaskInput(e.target.value)} />
+      <input
+        type="text"
+        value={taskInput}
+        onChange={(e) => setTaskInput(e.target.value)}
+        autoFocus
+      />
     );
   } else {
     return <label htmlFor={taskId}>{taskLabel}</label>;
@@ -131,7 +140,7 @@ function TaskItemButtons({
 
   if (isEditing) {
     return (
-      <div>
+      <div className="task-item-btns">
         <Button onClick={handleSaveEdit}>Save</Button>
         <Button onClick={handleUndo}>Undo</Button>
         <Button onClick={handleDelete}>Delete</Button>
@@ -139,7 +148,7 @@ function TaskItemButtons({
     );
   } else {
     return (
-      <div>
+      <div className="task-item-btns">
         <Button onClick={() => setIsEditing(true)}>Edit</Button>
         <Button onClick={handleDelete}>Delete</Button>
       </div>

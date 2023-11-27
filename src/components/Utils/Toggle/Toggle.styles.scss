@@ -1,6 +1,7 @@
 @mixin toggle-container-mixin($font-size) {
   font-size: $font-size;
   margin-block: 0.5rem;
+  text-align: left;
 }
 
 .toggle-container,

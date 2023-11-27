@@ -4,6 +4,8 @@
   .pomodoro-status {
     text-transform: capitalize;
     font-size: 1.3rem;
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
   }
 
   .active-task {
