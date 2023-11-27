@@ -1,25 +1,17 @@
-import TaskItem from "./TaskItem";
+import Task from "./TaskItem";
+
+import { usePomodoroState } from "@components/PomodoroApp/contexts/globalStateContexts";
 
 export default function TasksList() {
-  // TODO: This must be derived from the global state
-  // TODO: CHANGE THIS LATER
-  const tasks = [
-    {
-      id: 0,
-      taskLabel: "lorem task",
-      isDone: false,
-    },
-    {
-      id: 1,
-      taskLabel: "ipsum task",
-      isDone: true,
-    },
-  ];
+  const { tasks } = usePomodoroState();
 
   return (
     <div>
       {tasks.map((task) => (
-        <TaskItem task={task} />
+        <Task
+          key={`${task.id}:${Math.floor(Math.random() * 100000)}`}
+          task={task}
+        />
       ))}
     </div>
   );

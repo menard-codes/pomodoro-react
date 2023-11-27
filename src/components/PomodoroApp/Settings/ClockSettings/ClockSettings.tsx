@@ -1,16 +1,39 @@
 import { useState } from "react";
 
+// Components
 import ClockInput from "./ClockInput";
 import Button from "@components/Utils/Button";
 
+// Context Hooks
+import {
+  usePomodoroState,
+  usePomodoroDispatch,
+} from "@components/PomodoroApp/contexts/globalStateContexts";
+
+// SCSS
 import "./ClockSettings.styles.scss";
 
-export default function ClockSettings() {
-  // TODO: All these state default input values
-  // TODO: must come from the global state context
-  const [pomodoroInput, setPomodoroInput] = useState(25);
-  const [shortBreakInput, setShortBreakInput] = useState(5);
-  const [longBreakInput, setLongBreakInput] = useState(15);
+interface ClockSettingsProps {
+  setSettingsIsShown: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function ClockSettings({
+  setSettingsIsShown,
+}: ClockSettingsProps) {
+  const {
+    settings: { clockSettings },
+  } = usePomodoroState();
+  const pomodoroDispatch = usePomodoroDispatch();
+
+  const [pomodoroInput, setPomodoroInput] = useState(
+    clockSettings.pomodoroTime
+  );
+  const [shortBreakInput, setShortBreakInput] = useState(
+    clockSettings.shortBreakTime
+  );
+  const [longBreakInput, setLongBreakInput] = useState(
+    clockSettings.longBreakTime
+  );
 
   return (
     <div className="clock-params-container">
@@ -32,8 +55,17 @@ export default function ClockSettings() {
         />
       </div>
       <Button
-        // TODO: `Save` must be a dispatch
-        onClick={() => alert("saved")}
+        onClick={() => {
+          pomodoroDispatch({
+            type: "CHANGE_CLOCK_PARAMETERS",
+            clockSettings: {
+              pomodoroTime: pomodoroInput,
+              shortBreakTime: shortBreakInput,
+              longBreakTime: longBreakInput,
+            },
+          });
+          setSettingsIsShown(false);
+        }}
         className="save-btn"
       >
         Save

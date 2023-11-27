@@ -3,10 +3,15 @@ import "./Toggle.styles.scss";
 
 interface ToggleProps {
   toggleLabel: string;
+  isToggled: boolean;
   onToggle: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function Toggle({ toggleLabel, onToggle }: ToggleProps) {
+export default function Toggle({
+  toggleLabel,
+  isToggled,
+  onToggle,
+}: ToggleProps) {
   const id = useId();
 
   return (
@@ -16,6 +21,7 @@ export default function Toggle({ toggleLabel, onToggle }: ToggleProps) {
         className="toggle"
         id={id}
         onChange={(e) => onToggle(e)}
+        checked={isToggled}
       />
       <label htmlFor={id}>{toggleLabel}</label>
     </div>

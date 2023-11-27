@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Button from "@components/Utils/Button";
 
+import { usePomodoroDispatch } from "@components/PomodoroApp/contexts/globalStateContexts";
+
 interface NewTaskInput extends EventTarget {
   newTask: HTMLInputElement;
 }
@@ -8,14 +10,18 @@ interface NewTaskInput extends EventTarget {
 export default function NewTaskInput() {
   const [inputValue, setInputValue] = useState("");
 
+  const pomodoroDispatch = usePomodoroDispatch();
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (inputValue.length === 0) {
       return;
     }
 
-    // TODO: Add the new task via dispatch
-    alert("added new task");
+    pomodoroDispatch({
+      type: "ADD_TASK_ITEM",
+      task: inputValue,
+    });
     setInputValue("");
   };
 
