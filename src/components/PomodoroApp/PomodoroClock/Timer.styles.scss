@@ -1,0 +1,26 @@
+.time-display {
+  display: block;
+  background-color: #bbb;
+  color: #111;
+  width: fit-content;
+  margin-block: 1rem;
+  margin-inline: auto;
+  padding: 0.2rem 1rem;
+  border-radius: 1rem;
+  font-size: 3rem;
+}
+
+.btns-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-block: 0.5rem 1.5rem;
+
+  button {
+    padding: 0.2rem 0.8rem;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+}

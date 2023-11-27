@@ -6,6 +6,8 @@ import { TaskItem } from "@components/PomodoroApp/store";
 
 import { usePomodoroDispatch } from "@components/PomodoroApp/contexts/globalStateContexts";
 
+import "./TaskItem.styles.scss";
+
 interface TaskProps {
   task: TaskItem;
 }
@@ -55,7 +57,7 @@ export default function Task({ task }: TaskProps) {
   };
 
   return (
-    <div>
+    <div className="task-item-container">
       <input
         type="checkbox"
         id={`${task.id}`}

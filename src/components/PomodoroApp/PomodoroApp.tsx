@@ -15,6 +15,9 @@ import {
   PomodoroDispatchContext,
 } from "./contexts/globalStateContexts";
 
+// scss
+import "./PomodoroApp.styles.scss";
+
 export default function PomodoroApp() {
   let initialState: PomodoroGlobalState;
 
@@ -38,10 +41,11 @@ export default function PomodoroApp() {
   return (
     <PomodoroStateContext.Provider value={pomodoroState}>
       <PomodoroDispatchContext.Provider value={pomodoroDispatch}>
-        <div>
-          <h1>Pomodoro</h1>
+        <div className="pomodoro-app">
+          <h1>Pomodoro Clock</h1>
           <Settings />
           <PomodoroClock />
+          <hr />
           <Tasks />
         </div>
       </PomodoroDispatchContext.Provider>

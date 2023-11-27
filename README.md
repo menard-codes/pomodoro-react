@@ -15,3 +15,4 @@ This is a simple Pomodoro App project build with React and TypeScript
   - [x] Context Hooks
   - [x] Integration to Components
 - [ ] Final Styling
+- [ ] Add Icons
