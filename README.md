@@ -8,7 +8,7 @@ This is a simple Pomodoro App project build with React and TypeScript
 ## TODO
 
 - [x] Static UI
-- [ ] Global State Management
+- [x] Global State Management
   - [x] Global State
   - [x] Reducer Function
   - [x] Context Managers
