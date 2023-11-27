@@ -5,6 +5,10 @@
 
 This is a simple Pomodoro App project build with React and TypeScript
 
+## Demo
+
+[Check the demo here](https://pomodoro-react-71vv.vercel.app/)
+
 ## TODO
 
 - [x] Static UI
