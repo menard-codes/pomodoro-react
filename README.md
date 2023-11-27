@@ -9,8 +9,9 @@ This is a simple Pomodoro App project build with React and TypeScript
 
 - [x] Static UI
 - [ ] Global State Management
-  - [ ] Reducer Function
-  - [ ] Context Managers
-  - [ ] Context Hooks
-  - [ ] Integration to Components
+  - [x] Global State
+  - [x] Reducer Function
+  - [x] Context Managers
+  - [x] Context Hooks
+  - [x] Integration to Components
 - [ ] Final Styling

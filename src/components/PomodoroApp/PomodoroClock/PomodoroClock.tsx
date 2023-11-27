@@ -1,24 +1,19 @@
-import Button from "@components/Utils/Button";
+// Components
+import Timer from "./Timer";
+
+// Context Hooks
+import { usePomodoroState } from "@components/PomodoroApp/contexts/globalStateContexts";
 
 export default function PomodoroClock() {
-  // TODO: This must be derived from the global state
-  // TODO: They must be handled via `useState`
-  const minutes = 24;
-  const seconds = 39;
+  const { pomodoroStatus, tasks } = usePomodoroState();
 
-  // TODO: Get these later from the global state
-  const pomodoroStatus = "Pomodoro";
-  const activeTask = "lorem ipsum task";
+  const activeTask = tasks.find((task) => !task.isDone);
 
   return (
     <div>
       <p>{pomodoroStatus}</p>
-      <time>
-        {minutes} : {seconds}
-      </time>
-      <p>{activeTask}</p>
-      <Button>Play</Button>
-      <Button>Reset</Button>
+      <Timer />
+      <p>Next task: {activeTask?.taskLabel}</p>
     </div>
   );
 }
