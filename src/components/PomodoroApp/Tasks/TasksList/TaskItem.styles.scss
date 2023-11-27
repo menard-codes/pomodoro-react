@@ -1,0 +1,50 @@
+.task-item {
+  padding: 0.5rem 1rem;
+  background-color: #fff;
+  color: #000;
+  border-radius: 1rem;
+  text-align: left;
+  margin-block: 1rem;
+  border: (calc(2 / 16) * 1rem) solid #333;
+
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 1rem;
+
+  input[type="checkbox"] {
+    cursor: pointer;
+    accent-color: #333;
+    height: fit-content;
+    outline: (calc(2 / 16) * 1rem) solid #999;
+    outline-offset: calc(1.5 / 16) * 1rem;
+  }
+
+  label {
+    cursor: pointer;
+    user-select: none;
+  }
+
+  input[type="checkbox"]:checked ~ * label {
+    text-decoration: line-through;
+    font-style: italic;
+    color: #888;
+  }
+
+  input[type="text"] {
+    font: inherit;
+    padding: 0 0.5rem;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .task-item-btns {
+    display: flex;
+    gap: 0.5rem;
+
+    button {
+      padding: 0.3rem 0.8rem;
+    }
+  }
+}

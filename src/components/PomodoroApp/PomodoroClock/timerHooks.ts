@@ -115,5 +115,5 @@ export default function useTimer() {
     setTime(getTimeInSeconds());
   };
 
-  return { time, timerStatus, handlePausePlay, handleReset };
+  return { time, timerStatus, tasks, handlePausePlay, handleReset };
 }

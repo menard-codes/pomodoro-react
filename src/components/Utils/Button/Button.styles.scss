@@ -1,4 +1,13 @@
 button {
   font: inherit;
   cursor: pointer;
+
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+
+  &:disabled {
+    color: #aaa;
+  }
 }

@@ -3,6 +3,8 @@ import Button from "@components/Utils/Button";
 
 import { usePomodoroDispatch } from "@components/PomodoroApp/contexts/globalStateContexts";
 
+import "./NewTaskInput.styles.scss";
+
 interface NewTaskInput extends EventTarget {
   newTask: HTMLInputElement;
 }
@@ -26,13 +28,17 @@ export default function NewTaskInput() {
   };
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
+    <form onSubmit={(e) => handleSubmit(e)} className="new-task-form">
       <input
         type="text"
+        placeholder="Enter new task..."
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
+        className="new-task-input"
       />
-      <Button type="submit">Add</Button>
+      <Button type="submit" disabled={inputValue.length === 0}>
+        Add
+      </Button>
     </form>
   );
 }

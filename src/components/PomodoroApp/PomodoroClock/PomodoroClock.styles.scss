@@ -1,0 +1,18 @@
+.pomodoro-clock-container {
+  padding: 1rem;
+
+  .pomodoro-status {
+    text-transform: capitalize;
+    font-size: 1.3rem;
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+  }
+
+  .active-task {
+    background-color: #444444;
+    color: #ffffff;
+    font-size: 1.2rem;
+    padding: 0.4rem 1rem;
+    border-radius: 1rem;
+  }
+}

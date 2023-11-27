@@ -1,7 +1,10 @@
 import useTimer from "./timerHooks";
 
+// scss
+import "./Timer.styles.scss";
+
 export default function Timer() {
-  const { time, handlePausePlay, handleReset, timerStatus } = useTimer();
+  const { time, handlePausePlay, handleReset, timerStatus, tasks } = useTimer();
 
   const formatTime = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
@@ -11,13 +14,18 @@ export default function Timer() {
     return `${formattedMinutes}:${formattedSeconds}`;
   };
 
+  const noAvailableTasks =
+    tasks.every((task) => task.isDone) || tasks.length === 0;
+
   return (
     <div>
-      <div>{formatTime(time)}</div>
-      <button onClick={handlePausePlay}>
-        {timerStatus === "play" ? "Pause" : "Play"}
-      </button>
-      <button onClick={handleReset}>Reset</button>
+      <time className="time-display">{formatTime(time)}</time>
+      <div className="btns-container">
+        <button onClick={handlePausePlay} disabled={noAvailableTasks}>
+          {timerStatus === "play" ? "Pause" : "Play"}
+        </button>
+        <button onClick={handleReset}>Reset</button>
+      </div>
     </div>
   );
 }

@@ -14,4 +14,5 @@ This is a simple Pomodoro App project build with React and TypeScript
   - [x] Context Managers
   - [x] Context Hooks
   - [x] Integration to Components
-- [ ] Final Styling
+- [x] Final Styling
+- [ ] Add Icons

@@ -1,0 +1,35 @@
+.new-task-form {
+  display: flex;
+  gap: 1rem;
+
+  margin-block: 1rem 3rem;
+
+  .new-task-input {
+    display: inline-block;
+    width: 90vw;
+    max-width: calc(300 / 16) * 1rem;
+    padding: 0.2rem 0.5rem;
+    font: inherit;
+    border: (calc(4 / 16) * 1rem) solid #555;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    color: #111;
+
+    &::placeholder {
+      font-style: italic;
+    }
+
+    @media (prefers-color-scheme: light) {
+      background-color: #ddd;
+      color: #000;
+    }
+  }
+
+  button {
+    padding-inline: 1rem;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+}

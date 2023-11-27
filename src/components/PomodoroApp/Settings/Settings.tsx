@@ -24,7 +24,9 @@ export default function Settings() {
   return (
     <div>
       {/* TODO: Change this to Icon */}
-      <Button onClick={() => setSettingsIsShown(true)}>Settings</Button>
+      <Button onClick={() => setSettingsIsShown(true)} className="settings-btn">
+        Settings
+      </Button>
       {settingsIsShown && (
         <Modal exitModal={() => setSettingsIsShown(false)}>
           <h2 className="modal-title">Settings</h2>
