@@ -130,7 +130,7 @@ export function pomodoroReducer(
     default: {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const _impossible: never = action;
-      throw new Error(`Unknown action.`);
+      throw new Error(`Unknown action. ${_impossible}`);
     }
   }
 }
