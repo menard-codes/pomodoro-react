@@ -3,7 +3,7 @@
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 
-This is a simple Pomodoro App project build with React and TypeScript
+This is a simple Pomodoro App project built with React and TypeScript
 
 ## Demo
 
