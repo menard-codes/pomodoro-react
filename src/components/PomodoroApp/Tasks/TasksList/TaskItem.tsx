@@ -4,7 +4,10 @@ import Button from "@components/Utils/Button";
 
 import { TaskItem } from "@components/PomodoroApp/store";
 
-import { usePomodoroDispatch } from "@components/PomodoroApp/contexts/globalStateContexts";
+import {
+  usePomodoroState,
+  usePomodoroDispatch,
+} from "@components/PomodoroApp/contexts/globalStateContexts";
 
 import "./TaskItem.styles.scss";
 
@@ -18,6 +21,7 @@ export default function Task({ task }: TaskProps) {
 
   const customTaskId = useId();
 
+  const { tasks } = usePomodoroState();
   const pomodoroDispatch = usePomodoroDispatch();
 
   const handleCheckTask = () => {
@@ -82,6 +86,34 @@ export default function Task({ task }: TaskProps) {
           handleSaveEdit={handleSaveEdit}
           handleDelete={handleDelete}
         />
+        <div className="reorder-btns">
+          <Button
+            onClick={() =>
+              pomodoroDispatch({
+                type: "MOVE_TASK_ITEM",
+                taskIndex: tasks.findIndex(
+                  (taskItem) => taskItem.id === task.id
+                ),
+                to: "up",
+              })
+            }
+          >
+            ⬆️
+          </Button>
+          <Button
+            onClick={() =>
+              pomodoroDispatch({
+                type: "MOVE_TASK_ITEM",
+                taskIndex: tasks.findIndex(
+                  (taskItem) => taskItem.id === task.id
+                ),
+                to: "down",
+              })
+            }
+          >
+            ⬇️
+          </Button>
+        </div>
       </div>
     </div>
   );

@@ -40,6 +40,12 @@ interface DeleteTaskItem {
   taskId: number;
 }
 
+interface MoveTaskItem {
+  type: "MOVE_TASK_ITEM";
+  taskIndex: number;
+  to: "up" | "down";
+}
+
 export type PomodoroStateActions =
   | ChangePomodoroStatus
   | ChangeClockParams
@@ -48,7 +54,8 @@ export type PomodoroStateActions =
   | SetTaskSwitching
   | AddTaskItem
   | EditTaskItem
-  | DeleteTaskItem;
+  | DeleteTaskItem
+  | MoveTaskItem;
 
 if (localStorage.getItem("nextId")) {
   localStorage.setItem("nextId", "0");
@@ -126,6 +133,50 @@ export function pomodoroReducer(
         ...state,
         tasks: updatedTasks,
       };
+    }
+    case "MOVE_TASK_ITEM": {
+      if (action.taskIndex === 0 && action.to === "up") {
+        return state;
+      } else if (
+        action.taskIndex >= state.tasks.length - 1 &&
+        action.to === "down"
+      ) {
+        return state;
+      }
+
+      switch (action.to) {
+        case "up": {
+          const arrayA = state.tasks.slice(0, action.taskIndex - 1);
+          const arrayB = state.tasks.slice(action.taskIndex + 1);
+          const newTasks = [
+            ...arrayA,
+            state.tasks[action.taskIndex],
+            state.tasks[action.taskIndex - 1],
+            ...arrayB,
+          ];
+          return {
+            ...state,
+            tasks: newTasks,
+          };
+        }
+        case "down": {
+          const arrayA = state.tasks.slice(0, action.taskIndex);
+          const arrayB = state.tasks.slice(action.taskIndex + 2);
+          const newTasks = [
+            ...arrayA,
+            state.tasks[action.taskIndex + 1],
+            state.tasks[action.taskIndex],
+            ...arrayB,
+          ];
+          return {
+            ...state,
+            tasks: newTasks,
+          };
+        }
+        default: {
+          throw new Error(`Unknown move direction: ${action.to}`);
+        }
+      }
     }
     default: {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
