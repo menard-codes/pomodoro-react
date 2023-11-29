@@ -8,10 +8,7 @@ export default function TasksList() {
   return (
     <div>
       {tasks.map((task) => (
-        <Task
-          key={`${task.id}:${Math.floor(Math.random() * 100000)}`}
-          task={task}
-        />
+        <Task key={Math.floor(Math.random() * 10_000_000_000)} task={task} />
       ))}
     </div>
   );
